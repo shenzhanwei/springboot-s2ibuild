@@ -35,7 +35,7 @@ RUN (curl -fSL https://www-eu.apache.org/dist/maven/maven-3/3.5.4/binaries/apach
     mv /usr/local/apache-maven-3.5.4 /usr/local/maven && \
     ln -sf /usr/local/maven/bin/mvn /usr/local/bin/mvn && \
     mkdir -p $HOME/.m2 && chmod -R a+rwX $HOME/.m2
-
+ADD ./settings.xml $HOME/.m2/
 # Install Gradle 4.4
 #ARG GRADLE_VER
 #ENV GRADLE_VERSION $GRADLE_VER
