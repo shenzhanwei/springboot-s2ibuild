@@ -27,9 +27,9 @@ RUN yum install -y java-1.8.0-openjdk java-1.8.0-openjdk-devel && \
     yum clean all -y && \
     mkdir -p /opt/openshift
 
-# Install Maven 3.5.2
-ARG MAVEN_VER
-ENV MAVEN_VERSION $MAVEN_VER
+# Install Maven 3.5.4
+#ARG MAVEN_VER
+#ENV MAVEN_VERSION $MAVEN_VER
 RUN (curl -fSL https://www-eu.apache.org/dist/maven/maven-3/3.5.4/binaries/apache-maven-3.5.4-bin.tar.gz | \
     tar -zx -C /usr/local) && \
     mv /usr/local/apache-maven-3.5.4 /usr/local/maven && \
@@ -37,17 +37,17 @@ RUN (curl -fSL https://www-eu.apache.org/dist/maven/maven-3/3.5.4/binaries/apach
     mkdir -p $HOME/.m2 && chmod -R a+rwX $HOME/.m2
 
 # Install Gradle 4.4
-ARG GRADLE_VER
-ENV GRADLE_VERSION $GRADLE_VER
-RUN curl -fSL https://services.gradle.org/distributions/gradle-$GRADLE_VERSION-bin.zip -o /tmp/gradle-$GRADLE_VERSION-bin.zip && \
-    unzip /tmp/gradle-$GRADLE_VERSION-bin.zip -d /usr/local/ && \
-    rm /tmp/gradle-$GRADLE_VERSION-bin.zip && \
-    mv /usr/local/gradle-$GRADLE_VERSION /usr/local/gradle && \
-    ln -sf /usr/local/gradle/bin/gradle /usr/local/bin/gradle && \
-    mkdir -p $HOME/.gradle && chmod -R a+rwX $HOME/.gradle
+#ARG GRADLE_VER
+#ENV GRADLE_VERSION $GRADLE_VER
+#RUN curl -fSL https://services.gradle.org/distributions/gradle-$GRADLE_VERSION-bin.zip -o /tmp/gradle-$GRADLE_VERSION-bin.zip && \
+#    unzip /tmp/gradle-$GRADLE_VERSION-bin.zip -d /usr/local/ && \
+#    rm /tmp/gradle-$GRADLE_VERSION-bin.zip && \
+#    mv /usr/local/gradle-$GRADLE_VERSION /usr/local/gradle && \
+#    ln -sf /usr/local/gradle/bin/gradle /usr/local/bin/gradle && \
+#    mkdir -p $HOME/.gradle && chmod -R a+rwX $HOME/.gradle
 
 # Set the location of the mvn and gradle bin directories on search path
-ENV PATH=/usr/local/bin/mvn:/usr/local/bin/gradle:$PATH
+ENV PATH=/usr/local/bin/mvn:$PATH
 
 # Set the default build type to 'Maven'
 ENV BUILD_TYPE=Maven
