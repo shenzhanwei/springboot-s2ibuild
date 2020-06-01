@@ -32,7 +32,7 @@ ARG MAVEN_VER
 ENV MAVEN_VERSION $MAVEN_VER
 RUN (curl -fSL https://www-eu.apache.org/dist/maven/maven-3/3.5.4/binaries/apache-maven-3.5.4-bin.tar.gz | \
     tar -zx -C /usr/local) && \
-    mv /usr/local/apache-maven-$MAVEN_VERSION /usr/local/maven && \
+    mv /usr/local/apache-maven-3.5.4 /usr/local/maven && \
     ln -sf /usr/local/maven/bin/mvn /usr/local/bin/mvn && \
     mkdir -p $HOME/.m2 && chmod -R a+rwX $HOME/.m2
 
