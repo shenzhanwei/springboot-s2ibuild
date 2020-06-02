@@ -17,23 +17,23 @@ execute_maven_build()
   echo "---> Found pom.xml.  Attempting to build with 'mvn ${MAVEN_ARGS}'"
 
   echo "---> Using $(mvn --version)"
-
+  echo "==================   maven   start=================================="
   # Execute the actual build
   mvn -e $MAVEN_ARGS
-
+  echo "==================   maven   finished 1=================================="
   ERR=$?
   if [ $ERR -ne 0 ]; then
     echo "Aborting due to error code $ERR from Maven build"
     exit $ERR
   fi
-
+  echo "==================   maven   finished 2=================================="
   # Copy built artifacts (if any!) from the target/ directory
   # to the $DEPLOY_DIR directory for later deployment
-  cp -v $HOME/target/*.* $DEPLOY_DIR 2> /dev/null
+  cp -v $HOME/scrm-operation-server/target/*.jar $DEPLOY_DIR 2> /dev/null
 
   # Clean up after Maven run ....
   mvn clean
-
+  echo "==================   maven   finished 3=================================="
   if [ -d "$HOME/.m2/repository" ]; then
     rm -rf $HOME/.m2/repository
   fi
@@ -86,7 +86,7 @@ fi
 
 echo "---> Starting Java web application build process ..."
 echo "---> Application source directory is set to $HOME ..."
- 
+
 DEPLOY_DIR=/opt/openshift
 echo "---> Set target directory to $DEPLOY_DIR ..."
 
@@ -105,6 +105,7 @@ else
 fi
 
 # For Spring Boot, there should only be 1 fat jar
+echo "---> ssssssssssssssssssssssss $HOME jar file is located in $DEPLOY_DIR/app.jar"
 if [ $(ls $DEPLOY_DIR/*.jar | wc -l) -eq 1 ]; then
   mv $DEPLOY_DIR/*.jar $DEPLOY_DIR/app.jar
   [ ! -f $DEPLOY_DIR/app.jar ] && echo "Application could not be properly built." && exit 1 
