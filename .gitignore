@@ -1,1 +1,20 @@
 .git/
+# Java class files
+*.class
+*.log
+*.lock
+*.bak
+*.epoch
+.classpath
+.project
+# generated files
+*/target/**
+gen/
+bin/
+.settings/
+
+# idea ignore
+.idea/
+*.ipr
+*.iml
+*.iws

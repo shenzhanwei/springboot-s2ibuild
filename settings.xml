@@ -281,7 +281,7 @@ under the License.
         <repository>
           <id>localRepository</id>
           <name>localRepository</name>
-          <url>http://9.112.245.79:8081/nexus/content/groups/public/</url>
+          <url>http://9.112.254.79:8081/nexus/content/groups/public/</url>
         </repository>
       </repositories>
     </profile>
