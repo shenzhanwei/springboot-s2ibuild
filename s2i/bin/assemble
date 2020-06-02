@@ -13,7 +13,7 @@ execute_maven_build()
 {
   echo "---> Building application using Maven ..."
 
-  MAVEN_ARGS="package -DskipTests ${MAVEN_ARGS_APPEND}"
+  MAVEN_ARGS="clean package -DskipTests ${MAVEN_ARGS_APPEND}"
   echo "---> Found pom.xml.  Attempting to build with 'mvn ${MAVEN_ARGS}'"
 
   echo "---> Using $(mvn --version)"
