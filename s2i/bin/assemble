@@ -101,7 +101,7 @@ elif [ $BUILD_TYPE = "Gradle" ] && [ -f "$HOME/build.gradle" ]; then
   execute_gradle_build
 else
   # Copy the fat jar to the deployment directory
-  cp -v $HOME/*.jar $DEPLOY_DIR 2> /dev/null
+  cp -v $HOME/scrm-operation-server/target/*.jar $DEPLOY_DIR 2> /dev/null
 fi
 
 # For Spring Boot, there should only be 1 fat jar
